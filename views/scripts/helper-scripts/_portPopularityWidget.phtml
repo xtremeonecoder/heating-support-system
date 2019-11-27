@@ -1,0 +1,60 @@
+<?php
+/**
+ * Sea-Port Recommendation System
+ *
+ * @category   Application_Core
+ * @package    seaport-recommender
+ * @author     Suman Barua
+ * @developer  Suman Barua <sumanbarua576@gmail.com>
+ */
+
+/**
+ * @category   Application_Core
+ * @package    seaport-recommender
+ */
+
+$params = $this->params;
+$widgetNumber = $this->widgetNumber;
+?>
+
+<script type="text/javascript">
+window.onload = function(){
+    //Better to construct options first and then pass it as a parameter
+    var chartAllShipOptions<?php echo $widgetNumber; ?> = {
+        animationEnabled: true,
+        title: {
+            text: "Popularity Analysis of Sea-Ports",
+            fontColor: "Peru"
+        },
+        axisY: {
+            tickThickness: 0,
+            lineThickness: 0,
+            valueFormatString: " ",
+            gridThickness: 0
+        },
+        axisX: {
+            tickThickness: 0,
+            lineThickness: 0,
+            labelFontSize: 18,
+            labelFontColor: "Peru"
+        },
+        data: [{
+            indexLabelFontSize: 18,
+            toolTipContent: "<span style=\"color:#62C9C3\">{indexLabel}:</span> <span style=\"color:#CD853F\"><strong>{y}</strong></span>",
+            indexLabelPlacement: "inside",
+            indexLabelFontColor: "white",
+            indexLabelFontWeight: 600,
+            indexLabelFontFamily: "Verdana",
+            color: "#62C9C3",
+            type: "bar",
+            dataPoints: [
+                <?php foreach($params as $portName => $portScore): ?>
+                    {y: <?php echo $portScore; ?>, label: "<?php echo "Used: {$portScore}"; ?>", indexLabel: "<?php echo $portName; ?>"},
+                <?php endforeach; ?>
+            ]
+        }]
+    };
+    $("#chartAllShipContainer<?php echo $widgetNumber; ?>").CanvasJSChart(chartAllShipOptions<?php echo $widgetNumber; ?>);
+}
+</script>
+<div id="chartAllShipContainer<?php echo $widgetNumber; ?>" style="min-height: 370px; max-width: 930px;"></div>

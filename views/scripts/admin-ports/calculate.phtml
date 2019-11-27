@@ -1,0 +1,41 @@
+<?php
+/**
+ * Sea-Port Recommendation System
+ *
+ * @category   Application_Core
+ * @package    seaport-recommender
+ * @author     Suman Barua
+ * @developer  Suman Barua <sumanbarua576@gmail.com>
+ */
+
+/**
+ * @category   Application_Core
+ * @package    seaport-recommender
+ */
+?>
+
+<?php
+$menu = array('menu' => 'admin_top_menu');
+echo $this->topMenuWidget(array('headtitle' => 'Admin', 'menu' => $menu));
+?>
+
+<div id="formholder">
+    <h4>
+        <i class="icon-home" style="vertical-align:middle; margin-top: -2px;"></i>
+        <?php echo $this->translate('Admin Panel [Calculate Sea-Port For Vessels]'); ?>
+    </h4>
+
+    <div style="clear: both;"><br /></div>
+
+    <div class="span add-company-form" style="margin-left: 0px;">
+        <ul>
+            <?php if(!count($this->vesselData)): ?>
+                <li style="color: red;font-weight: bold; font-size: 20px; padding: 15px 0px;"><?php echo $this->translate('No vessel data found for calculation. Please upload vessel data.'); ?></li>
+            <?php endif; ?>
+            <?php if(!count($this->portData)): ?>
+                <li style="color: red;font-weight: bold; font-size: 20px; padding: 15px 0px;"><?php echo $this->translate('No port data found for calculation. Please upload port data.'); ?></li>
+            <?php endif; ?>
+        </ul>
+    </div>
+    <div style="clear: both;"></div>
+</div>

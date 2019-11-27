@@ -1,0 +1,50 @@
+<?php
+/**
+ * Sea-Port Recommendation System
+ *
+ * @category   Application_Core
+ * @package    seaport-recommender
+ * @author     Suman Barua
+ * @developer  Suman Barua <sumanbarua576@gmail.com>
+ */
+
+/**
+ * @category   Application_Core
+ * @package    seaport-recommender
+ */
+
+$params = $this->params;
+$widgetNumber = $this->widgetNumber;
+?>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    var portPopularityOptions<?php echo $widgetNumber; ?> = {
+        animationEnabled: true,
+        title: {
+            text: "Popularity Analysis of Sea-Ports"
+        },
+        axisY: {
+            title: "Numbe of Times Used (Popularity)",
+            suffix: "",
+            includeZero: true
+        },
+        axisX: {
+            title: "Sea-Ports"
+        },
+        data: [{
+            type: "column",
+            yValueFormatString: "#,##0.##",
+            dataPoints: [
+                <?php foreach($params as $portName => $portScore): ?>
+                { label: "<?php echo $portName; ?>", y: <?php echo $portScore; ?> },	
+                <?php endforeach; ?>
+            ]
+        }]
+    };
+    
+    $("#portPopularityContainer<?php echo $widgetNumber; ?>").CanvasJSChart(portPopularityOptions<?php echo $widgetNumber; ?>);
+});
+</script>
+
+<div id="portPopularityContainer<?php echo $widgetNumber; ?>" style="min-height: 400px; max-width: 930px; margin: 0px auto;"></div>

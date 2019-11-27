@@ -1,0 +1,81 @@
+<?php
+/**
+ * Sea-Port Recommendation System
+ *
+ * @category   Application_Core
+ * @package    seaport-recommender
+ * @author     Suman Barua
+ * @developer  Suman Barua <sumanbarua576@gmail.com>
+ */
+
+/**
+ * @category   Application_Core
+ * @package    seaport-recommender
+ */
+
+$params = $this->params;
+$shipName = $this->shipName;
+$popupView = $this->popupView;
+$widgetNumber = $this->widgetNumber;
+?>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    var chartPerShipOptions<?php echo $widgetNumber; ?> = {
+        animationEnabled: true,
+        title: {
+            text: "Total Weight Per Sea-Port (<?php echo $shipName; ?>)"
+        },
+        axisY: {
+            title: "Scored Weight (point)",
+            suffix: "",
+            includeZero: false
+        },
+        axisX: {
+            title: "Sea-Ports"
+        },
+        data: [{
+            type: "column",
+            yValueFormatString: "#,##0.##",
+            dataPoints: [
+                <?php foreach($params as $portName => $portScore): ?>
+                { label: "<?php echo $portName; ?>", y: <?php echo $portScore; ?> },	
+                <?php endforeach; ?>
+            ]
+        }]
+    };
+    
+    <?php if($popupView){ ?>
+    $("#chartPerShipShowChart<?php echo $widgetNumber; ?>").click(function() {
+        $("#chartPerShipDialogBox<?php echo $widgetNumber; ?>").dialog({
+            open: function(event, ui) {
+                $(".ui-widget-overlay").bind("click", function(event, ui) {         
+                    $("#chartPerShipDialogBox<?php echo $widgetNumber; ?>").dialog("close");
+                });
+            },
+            closeOnEscape: true,
+            draggable: false,
+            resizable: false,
+            title: "Scored Weight Per Sea-Port",
+            width: 700,
+            modal: true,
+            show: 500
+        });
+        $(".ui-widget-overlay").css({"background-color": "#111111"});
+        $("#chartPerShipChartContainer<?php echo $widgetNumber; ?>").CanvasJSChart(chartPerShipOptions<?php echo $widgetNumber; ?>);
+    });
+    <?php }else{ ?>
+    $("#chartPerShipContainer<?php echo $widgetNumber; ?>").CanvasJSChart(chartPerShipOptions<?php echo $widgetNumber; ?>);
+    <?php } ?>
+});
+</script>
+
+<?php if($popupView){ ?>
+<button id="chartPerShipShowChart<?php echo $widgetNumber; ?>"><?php echo $this->translate('View Chart'); ?></button>
+<div id="chartPerShipDialogBox<?php echo $widgetNumber; ?>" style="display: none;">
+    <div id="chartPerShipChartContainer<?php echo $widgetNumber; ?>" class="dialog" style="min-height: 400px; max-width: 1000px; margin: 0px auto;"></div>
+</div>
+<?php }else{ ?>
+<div id="chartPerShipContainer<?php echo $widgetNumber; ?>" style="min-height: 400px; max-width: 930px; margin: 0px auto;"></div>
+<?php } ?>
+
