@@ -3,7 +3,7 @@ A comprehensive seaport recommendation application!
 
 ### Live Demo URL: http://ba-app.xtremeonecoder.com/
 
-## Project Analysis
+## System Analysis
 
 ### Decision Criteria:
 
@@ -52,8 +52,8 @@ Port Labour is one of the most important aspects which can directly impact on ti
 ### Custom Formalities:
 Custom formalities at sea-port can both negatively as well as positively impact on shipment time and cost as well as the interest of choosing the port for shipment. For example, if the formalities are more strict and lengthy, such as - *Document Receiving -> Cargo Examination -> Classification -> Taxation -> Release / Withdraw*, then importers and exporters may not choose the port for their business.
 
-## Project Design:
-The diagram below shows an abstract network model view of the application. Some third party tools are used to develop the application, those are as follows:
+## Technology Used:
+A simple and comprehensive web application for seaport recommendation. Some third party tools are used to develop the application, those are as follows:
 
 1) PHP, a powerful server side scripting language for internet programming
 2) Zend Framework, a PHP framework for developing the core application.
@@ -66,9 +66,12 @@ The diagram below shows an abstract network model view of the application. Some 
 9) XHTML
 10) CSS
 
+## Netwrok Model:
+The diagram below shows an abstract network model view of the application.
+
 ![This network model shows the total process that happens in our application](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Network-Model.jpg)
 
-## Project Implementation:
+## System Implementation:
 The algorithm used for implementing this project is decision matrix algorithm. In simple decision matrix, the strategy is using some fixed weights for the decision criteria and then based on the decision criteria tried to assign scores to the different objects and at last tried to calculate, but in this case, thing was a little bit different. In this application two data tables were used:
 
 *1. Ships Data*
@@ -102,7 +105,7 @@ Base on evaluation of the ports and existing data of the ships, this DSS will se
 ![This chart shows the output results for 40 ships](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Result-in-Chart.jpg)
 
 ## Sample Port Weight Calculation:
-Suppose, there is a criteria “Operating Cost” at the port. If the cost is high the port will get lower grade for that criteria and vice versa.
+Suppose, there is a criteria “*Operating Cost*” at the port. If the cost is high the port will get lower grade for that criteria and vice versa.
 
 ### Sample Questionnaire (Port users / civil people may answer):
 
@@ -128,12 +131,12 @@ _I. Very bad (2)_
 
 _J. Extremely bad (1)_
 
-Suppose, we surveyed on 10 people and the results of the survey of Port-A for “Operating Cost” are as follows:
+Suppose, there was a survey on 10 people and the results of the survey of Port-A for “*Operating Cost*” are as follows:
 
 ![Sample Port Weight Calculation](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Port-Data-Calculation.jpg)
 
 ## Sample Ship Weight Calculation:
-Suppose for the same criteria “Operating Cost” at the port, if the “Operating Cost” at the port is an important aspect for the vessel manager or authority, it will get high priority and vice versa.
+Suppose for the same criteria “*Operating Cost*” at the port, if the “*Operating Cost*” at the port is an important aspect for the vessel manager or authority, it will get high priority and vice versa.
 
 ### Sample Questionnaire (Ship manage / authority may answer):
 
