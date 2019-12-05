@@ -3,7 +3,9 @@ A comprehensive seaport recommendation application!
 
 ### Live Demo URL: http://ba-app.xtremeonecoder.com/
 
-## Decision Criteria:
+## Project Analysis
+
+### Decision Criteria:
 
 ### Port Draft:
 This is an important criteria that container ships has to consider if their ship size is huge. Deeper draft attracts bigger ships.
@@ -48,10 +50,10 @@ Port management playing a very important role in ports. Ports need to deal with 
 Port Labour is one of the most important aspects which can directly impact on time and cost of the shipment at sea-ports. As it includes port workers ability and efficiency to load, unload and positioning the merchandise on a ship swiftly with safely as well as the capability of properly utilize the available logistics of the port.
 
 ### Custom Formalities:
-Custom formalities at sea-port can both negatively as well as positively impact on shipment time and cost as well as the interest of choosing the port for shipment. For example, if the formalities are more strict and lengthy, such as - Document Receiving -> Cargo Examination -> Classification -> Taxation -> Release / Withdraw, then importers and exporters may not choose the port for their business.
+Custom formalities at sea-port can both negatively as well as positively impact on shipment time and cost as well as the interest of choosing the port for shipment. For example, if the formalities are more strict and lengthy, such as - *Document Receiving -> Cargo Examination -> Classification -> Taxation -> Release / Withdraw*, then importers and exporters may not choose the port for their business.
 
 ## Project Design:
-The schematic diagram below shows an abstract view of the application. Some third party tools are used to develop the application, those are as follows:
+The diagram below shows an abstract network model view of the application. Some third party tools are used to develop the application, those are as follows:
 
 1) PHP, a powerful server side scripting language for internet programming
 2) Zend Framework, a PHP framework for developing the core application.
@@ -64,31 +66,27 @@ The schematic diagram below shows an abstract view of the application. Some thir
 9) XHTML
 10) CSS
 
-![This figure shows the total calculations that happens in our application](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Network-Model.jpg)
+![This network model shows the total process that happens in our application](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Network-Model.jpg)
 
-## Project implementation:
-The method that we use for implementing this project is decision matrix. In simple decision matrix the strategy is that we use some fixed weights for the decision criteria and then based on the decision criteria we try to give scores to the different objects and at last we try to calculate, but in our case It's a little bit different. In our application we use two tables:
+## Project Implementation:
+The algorithm used for implementing this project is decision matrix algorithm. In simple decision matrix, the strategy is using some fixed weights for the decision criteria and then based on the decision criteria tried to assign scores to the different objects and at last tried to calculate, but in this case, thing was a little bit different. In this application two data tables were used:
 
-1. Ships Data
-2. Ports Data
+*1. Ships Data*
+*2. Ports Data*
 
 ### Ships Data:
-This table has the scores for each ship that they give to each decision criteria. As we said earlier we founded 15 criteria that we thought are very important for selecting a container seaport. Each ship try to give scores to the criteria based on their priorities. For example, If for a ship operating cost and time are highly important so they will give higher scores to these two criteria and these scores will act as the weights in calculating the total value for each port.
+This table consists the scores for each ship that users give to each decision criteria. As it is said earlier that 15 criteria were founded that seemed to be very important for selecting a container seaport. Each ship has been assigned scores to the criteria based on their priorities. For example, if for a ship operating cost and time are highly important so they will give higher scores to these two criteria and these scores will act as the weights in calculating the total value for each port.
 
 ![Evaluation scores for each ship](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/ship-data.jpg)
 
 ### Ports Data:
-On the other side we have ports data (Figure 4) which are our evaluation on the ports. We tried to evaluate each port based on each criteria. For example, how high are the costs in the ports or how good is their night navigation system. We tried to find data for each port. For some criteria it was easy to find data but there were some criteria that weren't easy to get information about them from searching in the internet or from papers. So in these situations we had to no choice to make assumptions.
+On the other side there were ports data which were evaluated on the ports. It is tried to evaluate each port based on each criteria. For example, how high are the costs in the ports or how good is their night navigation system. It is tried to find data for each port. For some criteria it was easy to find data but there were some criteria that were not easy to get information about them from searching on the internet or from papers. So in these situations, there was no other choice but making assumptions.
 
-![Evaluation scores for each port](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/port-data.jpg)
+![Evaluation scoresear for each port](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/port-data.jpg)
 
-And after we got the data we tried to calculate the total scores for each ship. The calculation process is as below:
-
-Step-1: Calculating weight per criteria for all the ports:
+And after getting the data, it is tried to calculate the total scores for each ship. The calculation process is as below:
 
 ![Calculating weight per criteria for all the ports](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Process-Step-1.jpg)
-
-Step-2: Collecting weight per criteria for all the ships / vessels:
 
 ![Collecting weight per criteria for all the vessels](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Process-Step-2.jpg)
 
@@ -98,27 +96,36 @@ Step-2: Collecting weight per criteria for all the ships / vessels:
 
 ![Calculate function is invoked here and evaluated maximum score](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Algorithm-Implementation-2.jpg)
 
-Base on our evaluation of the ports and existing data of the ships, our DSS will select the best port for each ship.
+Base on evaluation of the ports and existing data of the ships, this DSS will select the best port for each ship.
 
 ![This chart shows the output results for 40 ships](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Result-in-Chart.jpg)
 
 ## Sample Port Weight Calculation:
-Suppose we have a criteria “Operating Cost” at the port. If the cost is high the port will get lower grade for that criteria and vice versa.
+Suppose, there is a criteria “Operating Cost” at the port. If the cost is high the port will get lower grade for that criteria and vice versa.
 
 ### Sample Questionnaire (Port users / civil people may answer):
 
-Q: What extent do you think “Port-A” provides good / bad “Operating Cost”?
+**Q:** _What extent do you think “Port-A” provides good / bad “Operating Cost”?_
 
-A. Extremely good / Excellent (10)
-B. Very good (9)
-C. Yes, it is good (8)
-D. Moderately good (7)
-E. It is good, but less (6)
-F. Maybe good, not sure (5)
-G. I do not want to say (4)
-H. Not good or it is bad (3)
-I. Very bad (2)
-J. Extremely bad (1)
+_A. Extremely good / Excellent (10)_
+
+_B. Very good (9)_
+
+_C. Yes, it is good (8)_
+
+_D. Moderately good (7)_
+
+_E. It is good, but less (6)_
+
+_F. Maybe good, not sure (5)_
+
+_G. I do not want to say (4)_
+
+_H. Not good or it is bad (3)_
+
+_I. Very bad (2)_
+
+_J. Extremely bad (1)_
 
 Suppose, we surveyed on 10 people and the results of the survey of Port-A for “Operating Cost” are as follows:
 
@@ -129,19 +136,28 @@ Suppose for the same criteria “Operating Cost” at the port, if the “Operat
 
 ### Sample Questionnaire (Ship manage / authority may answer):
 
-What extent “Operating Cost” is important for you?
+**Q:** _What extent “Operating Cost” is important for you?_
 
-A. Extremely important (10)
-B. Very important(9)
-C. Yes, it is important (8)
-D. Moderately important (7)
-E. It is important, but less (6)
-F. Maybe important, not sure (5)
-G. I do not want to say (4)
-H. Not important (3)
-I. It is irrelevant (2)
-J. Extremely irrelevant (1)
+_A. Extremely important (10)_
 
-Suppose in 10 surveys we got the following results:
+_B. Very important(9)_
+
+_C. Yes, it is important (8)_
+
+_D. Moderately important (7)_
+
+_E. It is important, but less (6)_
+
+_F. Maybe important, not sure (5)_
+
+_G. I do not want to say (4)_
+
+_H. Not important (3)_
+
+_I. It is irrelevant (2)_
+
+_J. Extremely irrelevant (1)_
+
+Suppose in 10 surveys, following results have been observed:
 
 ![Sample Ship Weight Calculation](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Ship-Data-Calculation.jpg)
