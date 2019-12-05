@@ -72,6 +72,7 @@ The diagram below shows an abstract network model view of the application. Some 
 The algorithm used for implementing this project is decision matrix algorithm. In simple decision matrix, the strategy is using some fixed weights for the decision criteria and then based on the decision criteria tried to assign scores to the different objects and at last tried to calculate, but in this case, thing was a little bit different. In this application two data tables were used:
 
 *1. Ships Data*
+
 *2. Ports Data*
 
 ### Ships Data:
