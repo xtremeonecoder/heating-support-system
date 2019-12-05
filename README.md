@@ -51,11 +51,11 @@ Port Labour is one of the most important aspects which can directly impact on ti
 Custom formalities at sea-port can both negatively as well as positively impact on shipment time and cost as well as the interest of choosing the port for shipment. For example, if the formalities are more strict and lengthy, such as - Document Receiving -> Cargo Examination -> Classification -> Taxation -> Release / Withdraw, then importers and exporters may not choose the port for their business.
 
 ## Project Design:
-The schematic diagram below shows an abstract view of the application. We used some third party tools to develop our application, those are as follows:
+The schematic diagram below shows an abstract view of the application. Some third party tools are used to develop the application, those are as follows:
 
 1) PHP, a powerful server side scripting language for internet programming
 2) Zend Framework, a PHP framework for developing the core application.
-3) MySQL, a database management tool for medial-scale application development.
+3) MySQL, a database management tool for medial-scale application evelopment.
 4) CanvasJS, a javascript and php tool for implementing chart / graph.
 5) SimpleXLSX Master, a php tool for handling excel data.
 6) jQuery, a javascript library for advanced application development.
@@ -64,9 +64,7 @@ The schematic diagram below shows an abstract view of the application. We used s
 9) XHTML
 10) CSS
 
-
-![This figure shows the total calculations that happens in our application]()
-
+![This figure shows the total calculations that happens in our application](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Network-Model.jpg)
 
 ## Project implementation:
 The method that we use for implementing this project is decision matrix. In simple decision matrix the strategy is that we use some fixed weights for the decision criteria and then based on the decision criteria we try to give scores to the different objects and at last we try to calculate, but in our case It's a little bit different. In our application we use two tables:
@@ -75,30 +73,34 @@ The method that we use for implementing this project is decision matrix. In simp
 2. Ports Data
 
 ### Ships Data:
-This table (Figure 3) has the scores for each ship that they give to each decision criteria. As we said earlier we founded 15 criteria that we thought are very important for selecting a container seaport. Each ship try to give scores to the criteria based on their priorities. For example, If for a ship operating cost and time are highly important so they will give higher scores to these two criteria and these scores will act as the weights in calculating the total value for each port.
+This table has the scores for each ship that they give to each decision criteria. As we said earlier we founded 15 criteria that we thought are very important for selecting a container seaport. Each ship try to give scores to the criteria based on their priorities. For example, If for a ship operating cost and time are highly important so they will give higher scores to these two criteria and these scores will act as the weights in calculating the total value for each port.
 
-![Evaluation scores for each ship]()
+![Evaluation scores for each ship](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/ship-data.jpg)
 
 ### Ports Data:
 On the other side we have ports data (Figure 4) which are our evaluation on the ports. We tried to evaluate each port based on each criteria. For example, how high are the costs in the ports or how good is their night navigation system. We tried to find data for each port. For some criteria it was easy to find data but there were some criteria that weren't easy to get information about them from searching in the internet or from papers. So in these situations we had to no choice to make assumptions.
 
-![Evaluation scores for each port]()
+![Evaluation scores for each port](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/port-data.jpg)
 
 And after we got the data we tried to calculate the total scores for each ship. The calculation process is as below:
 
 Step-1: Calculating weight per criteria for all the ports:
 
-![Calculating weight per criteria for all the ports]()
+![Calculating weight per criteria for all the ports](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Process-Step-1.jpg)
 
 Step-2: Collecting weight per criteria for all the ships / vessels:
 
-![Collecting weight per criteria for all the vessels]()
+![Collecting weight per criteria for all the vessels](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Process-Step-2.jpg)
 
-![Multiply each ship criteria weight with corresponding port criteria weight]()
+![Multiply each ship criteria weight with corresponding port criteria weight](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Process-Step-3-4-5.jpg)
+
+![Calculate function is implemented here for evaluating maximum score](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Algorithm-Implementation-1.jpg)
+
+![Calculate function is invoked here and evaluated maximum score](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Algorithm-Implementation-2.jpg)
 
 Base on our evaluation of the ports and existing data of the ships, our DSS will select the best port for each ship.
 
-![This chart shows the output results for 40 ships]()
+![This chart shows the output results for 40 ships](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Result-in-Chart.jpg)
 
 ## Sample Port Weight Calculation:
 Suppose we have a criteria “Operating Cost” at the port. If the cost is high the port will get lower grade for that criteria and vice versa.
@@ -120,7 +122,7 @@ J. Extremely bad (1)
 
 Suppose, we surveyed on 10 people and the results of the survey of Port-A for “Operating Cost” are as follows:
 
-![Sample Port Weight Calculation]()
+![Sample Port Weight Calculation](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Port-Data-Calculation.jpg)
 
 ## Sample Ship Weight Calculation:
 Suppose for the same criteria “Operating Cost” at the port, if the “Operating Cost” at the port is an important aspect for the vessel manager or authority, it will get high priority and vice versa.
@@ -142,4 +144,4 @@ J. Extremely irrelevant (1)
 
 Suppose in 10 surveys we got the following results:
 
-![Sample Ship Weight Calculation]()
+![Sample Ship Weight Calculation](https://github.com/xtremeonecoder/seaport-recommender/blob/master/Documentation/Ship-Data-Calculation.jpg)
