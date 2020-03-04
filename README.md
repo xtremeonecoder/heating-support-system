@@ -1,7 +1,7 @@
 # Seaport Recommendation Application
 A comprehensive seaport recommendation application!
 
-### Live Demo URL: http://ba-app.xtremeonecoder.com/
+### Live Demo URL: [http://ba-app.xtremeonecoder.com](http://ba-app.xtremeonecoder.com){:target="_blank"}
 
 ## System Analysis
 
